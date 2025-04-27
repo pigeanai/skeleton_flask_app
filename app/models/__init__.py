@@ -1,1 +1,1 @@
-from .example_model import ExampleTable
+from .user import User

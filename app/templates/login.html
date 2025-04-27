@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <title>
+            Example Flask App
+        </title>
+        <script src="{{ url_for('static', filename='js/common.js') }}"></script>
+    </head>
+    <body>
+        <h1>
+            Example Flask App
+        </h1>
+        <form action="/login" id="submitLogin" class="ajax-form" method="post">
+            <label for="uname">Username:</label><br>
+            <input type="text" id="uname" name="uname" ><br>
+            <label for="pword">Password:</label><br>
+            <input type="password" id="pword" name="pword"><br><br>
+            <input type="submit" value="Login">
+          </form>
+    </body>
+    
+</html>
