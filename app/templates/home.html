@@ -1,23 +1,36 @@
 <html>
     <head>
         <title>
-            Example Flask App - Home
+            Home 
         </title>
         <script src="{{ url_for('static', filename='js/common.js') }}"></script>
     </head>
     <body>
         <h1>
-            Home Page
+            Home | Hello '{{ current_user.username }}'
         </h1>
+        <p>
+            <h3>Current users:</h3>
+            <ul>
+                {% for user in users %}<li>{{ user.username }} - {{ user.email }} 
+                    {% if user.username != "user" %}
+                    <form action="/delete-user/{{ user.id }}" method="POST" style="display:inline;">
+                        <button type="submit" style="background:none; border:none; color:blue; text-decoration:underline; cursor:pointer;">
+                            Delete
+                        </button>
+                    {% endif %}
+</form></li>{% endfor %}
+            </ul>
+        </p>
         <form action="/add-user" id="submitAddUser" class="ajax-form" method="post">
             <label for="uname">Username:</label><br>
             <input type="text" id="uname" name="uname" ><br>
             <label for="email">Email:</label><br>
             <input type="text" id="email" name="email" ><br>
-            <label for="pword">Password:</label><br>
-            <input type="password" id="pword" name="pword"><br>
-            <label for="pword-confirm">Password Confirmation:</label><br>
-            <input type="password" id="pword-confirm" name="pword-confirm"><br><br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br>
+            <label for="password-confirm">Password Confirmation:</label><br>
+            <input type="password" id="password-confirm" name="password-confirm"><br><br>
             <input type="submit" value="Submit">
         </form>
         <br><br>
